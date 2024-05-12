@@ -1,0 +1,26 @@
+.container {
+    background-color: rgb(212, 211, 211);
+    border-radius: 5px;
+    padding: 10px 10px;
+}
+
+
+.navbar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+}
+
+.nav-link {
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    background-color: grey;
+    color: white;
+}

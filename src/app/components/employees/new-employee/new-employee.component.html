@@ -1,0 +1,75 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            Pridėti naują kontaktą
+        </div>
+        <div class="card-body">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Vardas:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" [class.is-invalid]="!employeeForm.get('name')?.valid && employeeForm.get('name')?.touched" formControlName="name">
+                        <div class="helper-block" *ngIf="!employeeForm.get('name')?.valid && employeeForm.get('name')?.touched">
+                            Vardas yra privalomas, 3-10 simboliai
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Pavardė:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" [class.is-invalid]="!employeeForm.get('surrname')?.valid && employeeForm.get('surrname')?.touched" formControlName="surrname">
+                        <div class="helper-block" *ngIf="!employeeForm.get('surrname')?.valid && employeeForm.get('surrname')?.touched">
+                            Pavardė yra privaloma, 3-20 simboliai
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Pareigos:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" [class.is-invalid]="!employeeForm.get('position')?.valid && employeeForm.get('position')?.touched" formControlName="position">
+                        <div class="helper-block " *ngIf="!employeeForm.get('position')?.valid && employeeForm.get('position')?.touched">
+                            Pareigos yra privalomos, 3-12 simboliai
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Įmonė:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" formControlName="company">
+                            <option value="u">UAB Imone</option>
+                            <option value="a">AB Imone</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-3 col-form-label text-end">Telefonas:</label>
+                    <div class="col-sm-9">
+                        <div class="row" formArrayName="phone">
+                            <div class="col-sm-12 mb-3" *ngFor="let phone of phone; let i=index ">
+                                <input type="text" class="form-control" [class.is-invalid]="!employeeForm.get('phone')?.valid && employeeForm.get('phone')?.touched" [formControlName]="i">
+                            </div>
+                        </div>
+                        <div class="helper-block " *ngIf="!employeeForm.get('phone')?.valid && employeeForm.get('phone')?.touched">
+                            Telefono numeris yra privalomas, šablonas +37065312345, 10-12 simbolių
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <button type="button" class="btn btn-secondary me-3" (click)="addPhoneField()">Pridėti papildomą telefono numeri</button>
+                            <button type="button" class="btn btn-danger" (click)="removePhoneField()">Pašalinti papildomą papildoma telefono numeri</button>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-3 row">
+                    <div class="col-sm-2 offset-sm-2">
+                        <button class="btn btn-success " [disabled]="!employeeForm.valid">Pridėti nauja kontakta</button>
+                    </div>
+
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

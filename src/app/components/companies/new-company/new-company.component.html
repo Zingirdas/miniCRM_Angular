@@ -1,0 +1,57 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            Prideti naują įmonę
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="newCompanySubmit(f)" #f="ngForm">
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Įmonės pavadinimas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" id="" class="form-control" [class.is-invalid]="!inputName.valid && inputName.touched" ngModel required minlength="2" maxlength="30" pattern="[a-zA-Z ]*" #inputName="ngModel">
+                        <div class="helper-block" *ngIf="!inputName.valid && inputName.touched ">Prašau įvesti įmonės pavadiną, turi būti 2-30 simbolių ilgio, privalomas laukas</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Įmones kodas:</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="code" id="" class="form-control" [class.is-invalid]="!inputCode.valid && inputCode.touched" ngModel required pattern="^[0-9]{7,9}$" #inputCode="ngModel">
+                        <div class="helper-block" *ngIf="!inputCode.valid && inputCode.touched ">Įmonės kodas turi turėti 7-9 simbolius, tik skaičius</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">PVM kodas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="VAT_code" id="" class="form-control is-invalid" [class.is-invalid]="!inputVatCode.valid && inputVatCode.touched" ngModel required pattern="(LT\d{1,13}|\d{7,15})" #inputVatCode="ngModel">
+                        <div class="helper-block" *ngIf="!inputVatCode.valid && inputVatCode.touched ">PVM kodas turi turėti 7-15 simbolius, tik skaičius arba LT ir skaicius</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Adresas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="address" id="" class="form-control is-invalid" [class.is-invalid]="!inputAddress.valid && inputAddress.touched" ngModel required pattern="^[A-ZĄČĘĖĮŠŲŪŽ][a-ząčęėįšųūž]*( ?,?\s| )?[A-ZĄČĘĖĮŠŲŪŽ][a-ząčęėįšųūž]*( g\.| pr\.| sk\.)?(\s\d{1,3}([-,\s]\d{1,3})?)?$" minlength="8" maxlength="45" #inputAddress="ngModel">
+                        <div class="helper-block" *ngIf="!inputAddress.valid && inputAddress.touched ">Adresas turi atitikti pagal šabloną: Miestas, Gatvės pavadinimas g. namo numeris - buto numeris</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">El. paštas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="email" id="" class="form-control is-invalid" [class.is-invalid]="!inputEmail.valid && inputEmail.touched" ngModel required email #inputEmail="ngModel">
+                        <div class="helper-block" *ngIf="!inputEmail.valid && inputEmail.touched ">Prašau įvesti teisingą el. pašto adresą</div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label text-end">Telefonas:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="phone" id="" class="form-control is-invalid" [class.is-invalid]="!inputPhone.valid && inputPhone.touched" ngModel required pattern="^\+370\d{8}$" #inputPhone="ngModel">
+                        <div class="helper-block" *ngIf="!inputPhone.valid && inputPhone.touched ">Prašau įvesti telefono numeri pagal forma +37065312345, turi tureti 8-12 simbolius</div>
+                    </div>
+                </div>
+                <div class="offset-sm-2">
+                    <button type="submit" class="btn btn-success" [disabled]="!f.valid">Pridėti naują įmonę</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
